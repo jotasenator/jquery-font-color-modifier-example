@@ -24,7 +24,7 @@
         
         .browser > h2, p {
           margin: 4px;
-          font-size: 90%;
+          font-size: 14px;
         }
 
         .info-content{
@@ -109,7 +109,7 @@
     const handleIncreaseH1 = function(){
         $('.h1-size span').remove()
         var h1FontSize = $('h1').css('font-size');
-        h1FontSize = (parseFloat(h1FontSize)*1.2).toFixed(2) +'px'; 
+        h1FontSize = (parseFloat(h1FontSize)+1) +'px'; 
         $('.h1-size').append('<span>'+ h1FontSize + '</span>') 
         console.log('h1 size '+h1FontSize)  
         $('h1').css('font-size',h1FontSize)        
@@ -117,7 +117,7 @@
     const handleDecreaseH1 = function(){
         $('.h1-size span').remove()
         var h1FontSize = $('h1').css('font-size'); 
-        h1FontSize = (parseFloat(h1FontSize)*0.8).toFixed(2) +'px'; 
+        h1FontSize = (parseFloat(h1FontSize)-1) +'px'; 
         $('.h1-size').append('<span>'+ h1FontSize + '</span>') 
         console.log('h1 size '+h1FontSize)  
         $('h1').css('font-size',h1FontSize)        
@@ -125,7 +125,7 @@
     const handleIncreaseH2 = function(){
         $('.h2-size span').remove()
         var h2FontSize = $('h2').css('font-size');
-        h2FontSize = (parseFloat(h2FontSize)*1.2).toFixed(2) +'px'; 
+        h2FontSize = (parseFloat(h2FontSize)+1) +'px'; 
         $('.h2-size').append('<span>'+ h2FontSize + '</span>') 
         console.log('h2 size '+h2FontSize) 
         $('h2').css('font-size',h2FontSize)         
@@ -133,7 +133,7 @@
     const handleDecreaseH2 = function(){
         $('.h2-size span').remove()
         var h2FontSize = $('h2').css('font-size');
-        h2FontSize = (parseFloat(h2FontSize)*0.8).toFixed(2) +'px'; 
+        h2FontSize = (parseFloat(h2FontSize)-1) +'px'; 
         $('.h2-size').append('<span>'+ h2FontSize + '</span>') 
         console.log('h2 size '+h2FontSize) 
         $('h2').css('font-size',h2FontSize)

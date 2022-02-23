@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Text Modificator</title>
+    <style>
+        .all-browsers {
+          margin: 0;
+          padding: 5px;
+          background-color: lightgray;
+        }
+        
+        .all-browsers > h1, .browser {
+          margin: 10px;
+          padding: 5px;
+        }
+        
+        .browser {
+          background: white;
+        }
+        
+        .browser > h2, p {
+          margin: 4px;
+          font-size: 90%;
+        }
+
+        .info-content{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .info-content>*{
+            margin-left: 50px;
+            margin-top: 10px;
+        }
+
+        .color-text p,.h1-font-text p,.h2-font-text p{
+            display: flex;
+            justify-content: center;
+           
+        }
+        
+        </style>
+</head>
+<article class="all-browsers">
+    <h1>Most Popular Browsers</h1>
+    <article class="browser">
+      <h2>Google Chrome</h2>
+      <p>Google Chrome is a web browser developed by Google, released in 2008. Chrome is the world's most popular web browser today!</p>
+    </article>
+    <article class="browser">
+      <h2>Mozilla Firefox</h2>
+      <p>Mozilla Firefox is an open-source web browser developed by Mozilla. Firefox has been the second most popular web browser since January, 2018.</p>
+    </article>
+    <article class="browser">
+      <h2>Microsoft Edge</h2>
+      <p>Microsoft Edge is a web browser developed by Microsoft, released in 2015. Microsoft Edge replaced Internet Explorer.</p>
+    </article>
+  </article>
+  <div class="info-content">
+      <div class="color-text">
+        <p>black</p>
+        <button class="color-change">change COLOR</button>
+      </div>
+      <div class="h1-font-text">
+        <p class="h1-size">h1 size: <span></span></p> 
+        <button class="h1-font-increase">+ FONT-SIZE</button>
+        <button class="h1-font-decrease">- FONT-SIZE</button>        
+      </div>
+      <div class="h2-font-text">
+        <p class="h2-size">h2 size: <span></span></p>        
+        <button class="h2-font-increase">+ FONT-SIZE</button>
+        <button class="h2-font-decrease">- FONT-SIZE</button>      
+      </div>
+
+  </div>
+  <script>      
+    var counterColor = 0
+
+    var colorAvailable = {
+        1:'red',
+        2:'green',
+        3:'blue',        
+        4:'black',
+    }
+
+    // change color h1 h2     
+    const handleColor = function(){ 
+        counterColor+=1 
+        $('h1,h2').css('color',colorAvailable[counterColor])
+        $('.color-text p').remove()
+        $('.color-text').prepend('<p>' + colorAvailable[counterColor] + '</p>').css('color',colorAvailable[counterColor])
+        if(counterColor>3){
+            counterColor = 0
+        }
+    }
+
+    // default font values
+    var h1FontSize = $('h1').css('font-size');
+    var h2FontSize = $('h2').css('font-size');
+
+    $('.h1-size').append('<span>'+ h1FontSize + '</span>') 
+    $('.h2-size').append('<span>'+ h2FontSize + '</span>') 
+
+    // increase decrease h1 h2 fonts
+    const handleIncreaseH1 = function(){
+        $('.h1-size span').remove()
+        var h1FontSize = $('h1').css('font-size');
+        h1FontSize = (parseFloat(h1FontSize)*1.2).toFixed(2) +'px'; 
+        $('.h1-size').append('<span>'+ h1FontSize + '</span>') 
+        console.log('h1 size '+h1FontSize)  
+        $('h1').css('font-size',h1FontSize)        
+    }
+    const handleDecreaseH1 = function(){
+        $('.h1-size span').remove()
+        var h1FontSize = $('h1').css('font-size'); 
+        h1FontSize = (parseFloat(h1FontSize)*0.8).toFixed(2) +'px'; 
+        $('.h1-size').append('<span>'+ h1FontSize + '</span>') 
+        console.log('h1 size '+h1FontSize)  
+        $('h1').css('font-size',h1FontSize)        
+    }
+    const handleIncreaseH2 = function(){
+        $('.h2-size span').remove()
+        var h2FontSize = $('h2').css('font-size');
+        h2FontSize = (parseFloat(h2FontSize)*1.2).toFixed(2) +'px'; 
+        $('.h2-size').append('<span>'+ h2FontSize + '</span>') 
+        console.log('h2 size '+h2FontSize) 
+        $('h2').css('font-size',h2FontSize)         
+    }
+    const handleDecreaseH2 = function(){
+        $('.h2-size span').remove()
+        var h2FontSize = $('h2').css('font-size');
+        h2FontSize = (parseFloat(h2FontSize)*0.8).toFixed(2) +'px'; 
+        $('.h2-size').append('<span>'+ h2FontSize + '</span>') 
+        console.log('h2 size '+h2FontSize) 
+        $('h2').css('font-size',h2FontSize)
+    }
+    
+   
+    // on click linking functions        
+    $('.color-change').on('click',handleColor)
+
+    $('.h1-font-increase').on('click',handleIncreaseH1)
+    $('.h1-font-decrease').on('click',handleDecreaseH1)
+
+    $('.h2-font-increase').on('click',handleIncreaseH2)
+    $('.h2-font-decrease').on('click',handleDecreaseH2)
+  </script>
+</html>
